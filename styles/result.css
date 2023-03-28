@@ -1,0 +1,39 @@
+.result {
+ padding-top: 140px;
+    padding-bottom: 91px;
+    text-align: center;
+}
+
+.result .container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.question-image {
+    position: absolute;
+    top: 225px;
+    z-index: -1;
+}
+
+.result-title {
+    max-width: 580px;
+    margin-bottom: 60px;
+}
+
+.result-score {
+    background-image: url("../images/result-image.png");
+    background-size: cover;
+    background-position: center;
+    width: 480px;
+    height: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Museo Sans Cyrl Bold', sans-serif;
+    font-size: 158px;
+    line-height: 190px;
+    text-align: center;
+    color: #FFFFFF;
+}

@@ -1,0 +1,57 @@
+.choice {
+    padding-top: 180px;
+    padding-bottom: 227px;
+}
+
+.choice .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.choice-content {
+    max-width: 583px;
+}
+
+.choice-description {
+    margin-top: 40px;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.choice-options {
+    margin-top: 60px;
+}
+
+.choice-option {
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #C1BBBB;
+    font-size: 18px;
+    line-height: 22px;
+    padding: 26px 70px 26px 40px;
+    position: relative;
+    transition: .2s ease all;
+    width: 583px;
+}
+
+.choice-option:hover {
+    border-left: 5px solid #6933DC;
+    color: #6933DC;
+    font-family: "Museo Sans Cyrl Bold", sans-serif;
+    cursor: pointer;
+}
+
+.choice-option-arrow {
+    position: absolute;
+    right: 40px;
+    top: 27px;
+    display: none;
+}
+
+.choice-option:hover .choice-option-arrow {
+    display: block;
+}
+
+
+
