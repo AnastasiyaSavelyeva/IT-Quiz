@@ -38,10 +38,37 @@ a {
     border: 0;
     transition: 0.4s;
     cursor: pointer;
+    text-decoration: none;
+}
+
+a.button {
+    display: inline-block;
 }
 
 .button:hover {
     background: #2f0d77;
+}
+
+.button:disabled {
+    background-color: #e2dfe7;
+    cursor: not-allowed;
+}
+
+.button-transparent {
+    background: transparent;
+    color: #6933DC;
+    border: 1px solid #6933DC;
+}
+
+.button-transparent:hover {
+    background-color: #6933DC;
+    color: white;
+}
+
+.button-transparent:disabled {
+    background-color: transparent;
+    color: #e2dfe7;
+    border: 1px solid #e2dfe7;
 }
 
 .footer {

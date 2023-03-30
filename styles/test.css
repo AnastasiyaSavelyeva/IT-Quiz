@@ -44,7 +44,7 @@
 .test-actions {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .test-time {
@@ -68,17 +68,6 @@
     font-size: 10px;
     text-align: center;
     line-height: 28px;
-}
-
-.button-transparent {
-    background: transparent;
-    color: #6933DC;
-    border: 1px solid #6933DC;
-}
-
-.button-transparent:hover {
-    background-color: #6933DC;
-    color: white;
 }
 
 .pass-question {

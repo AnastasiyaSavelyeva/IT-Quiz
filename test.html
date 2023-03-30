@@ -17,74 +17,38 @@
 
 <section class="test">
     <div class="container">
-        <div class="test-pre-title">Тест №1. “JavaScript: Начальный уровень”</div>
-        <div class="test-progress-bar">
-            <div class="progress-bar-item complete">
-                <div class="progress-bar-item-circle"></div>
-                <div class="progress-bar-item-text">Вопрос 1</div>
-            </div>
-            <div class="progress-bar-item complete">
-                <div class="progress-bar-item-circle"></div>
-                <div class="progress-bar-item-text">Вопрос 2</div>
-            </div>
-            <div class="progress-bar-item complete">
-                <div class="progress-bar-item-circle"></div>
-                <div class="progress-bar-item-text">Вопрос 3</div>
-            </div>
-            <div class="progress-bar-item complete">
-                <div class="progress-bar-item-circle"></div>
-                <div class="progress-bar-item-text">Вопрос 4</div>
-            </div>
-            <div class="progress-bar-item complete">
-                <div class="progress-bar-item-circle"></div>
-                <div class="progress-bar-item-text">Вопрос 5</div>
-            </div>
-        </div>
+        <div class="test-pre-title" id="pre-title">Тест №1. “JavaScript: Начальный уровень”</div>
+        <div class="test-progress-bar" id="progress-bar"></div>
         <div class="test-question">
-            <div class="test-question-title">
+            <div class="test-question-title" id="title">
                 <span>Вопрос 2:</span> Тут должен быть текст вопроса?
             </div>
-            <div class="test-question-options">
-                <div class="test-question-option">
-                    <input type="radio" id="answer-one" name="answer">
-                    <label for="answer-one">Вариант ответа 1</label>
-                </div>
-                <div class="test-question-option">
-                    <input type="radio" id="answer-two" name="answer">
-                    <label for="answer-two">Вариант ответа 2</label>
-                </div>
-                <div class="test-question-option">
-                    <input type="radio" id="answer-three" name="answer">
-                    <label for="answer-three">Вариант ответа 3</label>
-                </div>
-                <div class="test-question-option">
-                    <input type="radio" id="answer-four" name="answer">
-                    <label for="answer-four">Вариант ответа 4</label>
-                </div>
-            </div>
+            <div class="test-question-options" id="options"></div>
         </div>
         <div class="test-actions">
             <div class="test-previous-action">
-                <button class="button button-transparent">Назад</button>
+                <button class="button button-transparent" id="prev" disabled>Назад</button>
             </div>
             <div class="test-time">
                 <div class="test-time-text">Осталось времени:</div>
-                <div class="test-time-clock">49</div>
+                <div class="test-time-clock" id="timer">59</div>
             </div>
             <div class="test-next-action">
-                <button class="button button-transparent">Дальше</button>
+                <button class="button button-transparent" id="next" disabled>Дальше</button>
             </div>
         </div>
         <div class="pass-question">
-            <a href="#">Пропустить вопрос <img src="images/small-arrow.png" alt="arrow"></a>
+            <a href="javascript: void(0)" id="pass">Пропустить вопрос <img src="images/small-arrow.png" alt="arrow"></a>
         </div>
 
     </div>
 </section>
 
-
 <footer class="footer">
   «АйтилогияQuiz» © Все права защищены / 2022
 </footer>
+
+<script src="scripts/common.js"></script>
+<script src="scripts/test.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 .result {
- padding-top: 140px;
-    padding-bottom: 91px;
+    padding-top: 100px;
+    padding-bottom: 131px;
     text-align: center;
 }
 
@@ -13,7 +13,7 @@
 
 .question-image {
     position: absolute;
-    top: 225px;
+    top: 105px;
     z-index: -1;
 }
 
@@ -36,4 +36,35 @@
     line-height: 190px;
     text-align: center;
     color: #FFFFFF;
+}
+
+.show-answers {
+    position: absolute;
+    right: 0;
+    bottom: -100px;
+}
+
+.show-answers a {
+    font-size: 17px;
+    line-height: 20px;
+    color: #6933DC;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.show-answers:hover a {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.show-answers img {
+    margin-left: 13px;
+    display: flex;
+    align-items: center;
+    transition: .2s ease all;
+}
+
+.show-answers a:hover img {
+    transform: translateX(5px);
 }
