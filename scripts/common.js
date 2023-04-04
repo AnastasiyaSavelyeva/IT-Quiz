@@ -8,3 +8,4 @@ function checkUserData() {
         location.href = 'index.html'
     }
 }
+

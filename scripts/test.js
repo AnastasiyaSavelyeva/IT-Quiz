@@ -9,10 +9,12 @@
         progressBarElement: null, //55. создаем свойство со значением null
         currentQuestionIndex: 1,  //13. создаем переменную,со значением 1,тк в любом случае при загрузке теста начинаем с 1 вопроса
         userResult: [], //41. создаем массив, куда будем сохранять выбранные пользователем ответы
+        passLinkElement: null,
+
         init() {
             checkUserData();  //1. проверяем данные пользователя в строке url
-            const url = new URL(location.href);      //2. также надо проверить id, которое соответствует номеру теста
-            const testId = url.searchParams.get('id');
+            const url = new URL(location.href);
+            const testId = url.searchParams.get('id'); //2. также надо получить id, которое соответствует номеру теста
 
             if (testId) {   //3. если параметр существует, то выполняем код
                 const xhr = new XMLHttpRequest();       //5. запрашиваем с сервера все данные об этом тесте
@@ -48,6 +50,7 @@
             this.prevButtonElement = document.getElementById('prev'); //27. находим кнопку превьюс
             this.prevButtonElement.onclick = this.move.bind(this, 'prev'); //37. вешаем обработчик события на кнопку, а чтобы контекст не потерялся. добавляем bind и prev
             document.getElementById('pre-title').innerText = this.quiz.name; //51. находим и отображаем название текущего уровня теста на странице
+            this.passLinkElement = document.getElementById('passQuestion');
 
             this.prepareProgress();    //52
             this.showQuestion();          //14. вводим ф-ю д/отображения вопроса
@@ -118,7 +121,10 @@
                 this.optionsElement.appendChild(optionElement)
             });
 
+            this.passLinkElement.classList.remove('disabled');
+
             if (chosenOption && chosenOption.chosenAnswerId) { //50. чтобы кнопка была снова активной при перемещении по страницам с выбранным вариантом ответов, создаем условие
+
                 this.nextButtonElement.removeAttribute('disabled');
             } else {
                 this.nextButtonElement.setAttribute('disabled', 'disabled'); //38. делаем кнопку неактивной при каждом новом появлении вопроса
@@ -137,7 +143,8 @@
         },
 
         chooseAnswer() {
-            this.nextButtonElement.removeAttribute('disabled') //30. делаем кнопку активной после выбора варианта ответа
+            this.nextButtonElement.removeAttribute('disabled'); //30. делаем кнопку активной после выбора варианта ответа
+            this.passLinkElement.classList.add('disabled');
         },
 
         move(action) {  //31. создаем универсальную ф-ю, которая будет делать действие, когда мы переходим на следующую.предыдущую страницу, чтобы отобразить следующий вопрос (переменная action будет обозначать действие вперед, надаж или пропустить)
@@ -163,7 +170,7 @@
                 })
             }
 
-            /*console.log(this.userResult)*/
+           /* console.log(this.userResult)*/
 
             if (action === 'next' || action === 'pass') {  //31
                 this.currentQuestionIndex++;  // переход на след страницу
@@ -176,7 +183,6 @@
                 this.complete();
                 return;
             }
-
 
             //56. проходимся циклом по всем дочерним элементам прогресс-бара и работаем с классами, тк у нас снова возвращается коллекция, используем Array.from()
             Array.from(this.progressBarElement.children).forEach((item, index) => {
@@ -192,7 +198,6 @@
                 }
 
             });
-
 
             this.showQuestion(); //32. затем мы отображаем вопрос на странице
         },
@@ -216,18 +221,25 @@
 
             if (xhr.status === 200 && xhr.responseText) {
                 let result = null;
+
                 try {
                     result = JSON.parse(xhr.responseText);
                 } catch (e) {
                     location.href = 'index.html'
                 }
                 if (result) {
-                    /*console.log(result)*/
-                    location.href = 'result.html?score=' + result.score + '&total=' + result.total;
+                    let rightAnswers = [];
+                    this.userResult.forEach((right) => {
+                        rightAnswers.push(right.chosenAnswerId);
+                    })
+
+                   location.href = 'result.html' + location.search + '&answers=' + rightAnswers + '&score='  + result.score + '&total=' + result.total;
                 }
+
             } else {
                 location.href = 'index.html'
             }
+
         }
     }
 

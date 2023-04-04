@@ -174,10 +174,16 @@ input[type='radio']:checked::before {
     font-size: 13px;
     line-height: 16px;
     margin-top: 10px;
-
 }
 
+.disabled a {
+    pointer-events: none;
+    color: #e2dfe7;
+}
 
+.disabled img {
+    display: none;
+}
 
 
 
