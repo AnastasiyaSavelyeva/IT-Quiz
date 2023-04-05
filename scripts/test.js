@@ -147,7 +147,7 @@
             this.passLinkElement.classList.add('disabled');
         },
 
-        move(action) {  //31. создаем универсальную ф-ю, которая будет делать действие, когда мы переходим на следующую.предыдущую страницу, чтобы отобразить следующий вопрос (переменная action будет обозначать действие вперед, надаж или пропустить)
+        move(action) {  //31. создаем универсальную ф-ю, которая будет делать действие, когда мы переходим на следующую.предыдущую страницу, чтобы отобразить следующий вопрос (переменная action будет обозначать действие вперед, назад или пропустить)
             const chosenAnswer = Array.from(document.getElementsByClassName('option-answer')).find(element => {  //43. проходимся по инпутам и ищем с выбранным значением checked, но тк мы с помощью find получаем коллекцию, то мы переводим ее в массив с помощью Array.from()
                 return element.checked;
             });
@@ -157,7 +157,7 @@
             if (chosenAnswer && chosenAnswer.value) {   //44. проверяем, если ответ есть, то сохраняем его в переменную
                 chosenAnswerId = Number(chosenAnswer.value);
             }
-            /*console.log(chosenAnswerId)*/
+
             const existingResult = this.userResult.find(item => {  //46. проверяем, естб ли в объекте ответ с таким же id, чтобы не нагромождать ответы
                 return item.questionId === activeQuestion.id;
             });
@@ -178,9 +178,9 @@
                 this.currentQuestionIndex--;  // преход на предыдущую страницу
             }
 
-            //60. используем доп проверку - если индекс будет больше, чем кол-во вопромов, то мы вызываем ф-ю complete и используем return
+            //60. используем доп проверку - если индекс будет больше, чем кол-во вопросов, то мы вызываем ф-ю complete и используем return
             if (this.currentQuestionIndex > this.quiz.questions.length) {
-                this.complete();
+                    this.complete();
                 return;
             }
 
@@ -232,8 +232,7 @@
                     this.userResult.forEach((right) => {
                         rightAnswers.push(right.chosenAnswerId);
                     })
-
-                   location.href = 'result.html' + location.search + '&answers=' + rightAnswers + '&score='  + result.score + '&total=' + result.total;
+                        location.href = 'result.html' + location.search + '&answers=' + rightAnswers + '&score='  + result.score + '&total=' + result.total;
                 }
 
             } else {

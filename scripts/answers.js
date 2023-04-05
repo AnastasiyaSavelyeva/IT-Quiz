@@ -122,13 +122,23 @@
             console.log(userAnswers)
             console.log(this.answer)
 
-
             for (let i = 0; i < this.answer.length; i++) {
+
+                if(!userAnswers[i]) {
+                    const errorBlock = document.createElement('div');
+                    errorBlock.innerText = 'Тут пользователь ничего не выбрал';
+                    errorBlock.style.color = '#DC3333';
+
+                    document.getElementById('answer-' + this.answer[i]).parentNode.parentNode.appendChild((errorBlock));
+                    continue;
+                }
+
                 if (this.answer[i] === userAnswers[i]) {
-                   document.getElementById('answer-' + this.answer[i]).parentNode.style.color = '#5FDC33';
+                    document.getElementById('answer-' + this.answer[i]).parentNode.style.color = '#5FDC33';
                     document.getElementById('answer-' + this.answer[i]).style.borderColor = '#5FDC33';
                     document.getElementById('answer-' + this.answer[i]).style.borderWidth= '6px';
                 }
+
                 else {
                     document.getElementById('answer-' + userAnswers[i]).parentNode.style.color = '#DC3333';
                     document.getElementById('answer-' + userAnswers[i]).style.borderColor = '#DC3333';
@@ -136,14 +146,14 @@
                 }
             }
 
-
             this.comeBack();
-
         },
 
         comeBack() {
            const back = document.getElementById('back');
+
            back.addEventListener('click', () => {
+
                location.href = 'result.html' + location.search;
            })
     }
